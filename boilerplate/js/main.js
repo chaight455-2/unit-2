@@ -12,7 +12,7 @@ fetch('data/data.geojson')
     .then(function (data) {
         L.geoJSON(data, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(feature.properties.PARKNAME);
+                layer.bindPopup(feature.properties.NAME);
             }
         }).addTo(map);
     });
