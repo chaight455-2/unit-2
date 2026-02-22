@@ -1,5 +1,7 @@
+// Create map centered in US with reasonable zoom
 var map = L.map('map').setView([39.5, -98.35], 3);
 
+// Use OSM tileset
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -8,6 +10,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var currentYear = 1980;
 var geoJsonLayer;
 
+// Function to create a styled popup with parkname, year, and visitor count that dynamically changes with year.
 function buildPopup(props) {
     var visitors = props[currentYear];
     var visitorText = (visitors != null && visitors !== 0)
@@ -20,6 +23,7 @@ function buildPopup(props) {
         '</div>';
 }
 
+// Get data and add points and popups to map.
 fetch('data/data.geojson')
     .then(function (response) {
         return response.json();
@@ -32,12 +36,26 @@ fetch('data/data.geojson')
         }).addTo(map);
     });
 
-document.getElementById('year-slider').addEventListener('input', function () {
-    currentYear = parseInt(this.value);
+// control year variable when user interacts with sequence component.
+function updateYear(year) {
+    currentYear = Math.min(2024, Math.max(1980, year));
+    document.getElementById('year-slider').value = currentYear;
     document.getElementById('year-display').textContent = currentYear;
     if (geoJsonLayer) {
         geoJsonLayer.eachLayer(function (layer) {
             layer.setPopupContent(buildPopup(layer.feature.properties));
         });
     }
+}
+
+document.getElementById('year-slider').addEventListener('input', function () {
+    updateYear(parseInt(this.value));
+});
+
+document.getElementById('btn-prev').addEventListener('click', function () {
+    updateYear(currentYear - 1);
+});
+
+document.getElementById('btn-next').addEventListener('click', function () {
+    updateYear(currentYear + 1);
 });

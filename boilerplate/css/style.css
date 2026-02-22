@@ -14,18 +14,37 @@ body {
     bottom: 30px;
     right: 10px;
     background: rgba(255, 255, 255, 0.8);
-    padding: 8px 12px;
+    padding: 12px 16px;
     z-index: 1000;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    font-size: 0.875rem;
+    gap: 8px;
+    font-size: 1rem;
+}
+
+#slider-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 #slider-container input[type="range"] {
-    width: 160px;
+    width: 200px;
     cursor: pointer;
+}
+
+#btn-prev, #btn-next {
+    background: none;
+    border: 1px solid #aaa;
+    cursor: pointer;
+    padding: 4px 9px;
+    font-size: 0.875rem;
+    line-height: 1;
+}
+
+#btn-prev:hover, #btn-next:hover {
+    background: #eee;
 }
 
 #references {
