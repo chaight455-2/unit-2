@@ -23,10 +23,10 @@ function buildPopup(props) {
         '</div>';
 }
 
-// Scale visitor count to a circle radius using square root scale
+// Scale visitor count to circle radius — power 0.6 gives more visual separation than sqrt (0.5)
 function getRadius(visitors) {
     if (!visitors || visitors === 0) return 3;
-    return Math.max(2, Math.sqrt(visitors / 500000) * 3);
+    return Math.max(2, Math.pow(visitors / 500000, 0.6) * 5);
 }
 
 // Get data and add points and popups to map.
