@@ -8,9 +8,6 @@
         <!--put your external stylesheet links here-->
         <link rel="stylesheet" href="lib/dist/leaflet.css">
         <link rel="stylesheet" href="css/style.css">
-        <!--[if IE<9]>
-            <link rel="stylesheet" href="css/style.ie.css">
-        <![endif]-->
 
          <!--you can also place internal styles here;
              place these within <style> tags-->
@@ -19,9 +16,16 @@
 
     <body>
         <div id="map"></div>
+        <div id="slider-container">
+            <label>Year: <span id="year-display">1980</span></label>
+            <input type="range" id="year-slider" min="1980" max="2024" value="1980" step="1">
+        </div>
+        <div id="references">
+            <p>References:</p>
+            <a href="https://irma.nps.gov/Stats/SSRSReports/National%20Reports/Query%20Builder%20for%20Public%20Use%20Statistics%20(1979%20-%20Last%20Calendar%20Year)">Visitor data</a>
+            <a href="https://irma.nps.gov/DataStore/Reference/Profile/2224545?lnv=True">Park locations</a>
+        </div>
         <script type="text/javascript" src="lib/dist/leaflet-src.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
-        <p>Visitor data: https://irma.nps.gov/Stats/SSRSReports/National%20Reports/Query%20Builder%20for%20Public%20Use%20Statistics%20(1979%20-%20Last%20Calendar%20Year)</p>
-        <p>Park locations: https://irma.nps.gov/DataStore/Reference/Profile/2224545?lnv=True</p>
     </body>
 </html>
