@@ -23,6 +23,12 @@ function buildPopup(props) {
         '</div>';
 }
 
+// Scale visitor count to a circle radius using square root scale
+function getRadius(visitors) {
+    if (!visitors || visitors === 0) return 3;
+    return Math.max(2, Math.sqrt(visitors / 500000) * 3);
+}
+
 // Get data and add points and popups to map.
 fetch('data/data.geojson')
     .then(function (response) {
@@ -30,6 +36,15 @@ fetch('data/data.geojson')
     })
     .then(function (data) {
         geoJsonLayer = L.geoJSON(data, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, {
+                    radius: getRadius(feature.properties[currentYear]),
+                    fillColor: '#4a90d9',
+                    color: '#fff',
+                    weight: 1,
+                    fillOpacity: 0.8
+                });
+            },
             onEachFeature: function (feature, layer) {
                 layer.bindPopup(buildPopup(feature.properties));
             }
@@ -43,6 +58,7 @@ function updateYear(year) {
     document.getElementById('year-display').textContent = currentYear;
     if (geoJsonLayer) {
         geoJsonLayer.eachLayer(function (layer) {
+            layer.setRadius(getRadius(layer.feature.properties[currentYear]));
             layer.setPopupContent(buildPopup(layer.feature.properties));
         });
     }
