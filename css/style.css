@@ -5,18 +5,108 @@ body {
     font-family: sans-serif;
 }
 
+#app-container {
+    display: flex;
+    height: 100vh;
+}
+
+#sidebar {
+    width: 360px;
+    min-width: 360px;
+    height: 100vh;
+    overflow-y: auto;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    padding: 20px 22px;
+    box-sizing: border-box;
+}
+
+#sidebar-title {
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+    color: #ffffff;
+    line-height: 1.3;
+}
+
+#sidebar-subtitle {
+    margin: 0 0 16px 0;
+    font-size: 0.8rem;
+    color: #999;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+#sidebar-total {
+    background: #16213e;
+    border-left: 4px solid #4a90d9;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+#sidebar-total .total-year {
+    color: #4a90d9;
+}
+
+#sidebar-total .total-pct {
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 4px;
+    font-weight: normal;
+}
+
+.sidebar-section {
+    background: #16213e;
+    border-left: 4px solid #4a90d9;
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+}
+
+.sidebar-section h3 {
+    margin: 0 0 6px 0;
+    font-size: 0.9rem;
+    color: #4a90d9;
+}
+
+.sidebar-section p {
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #bbb;
+}
+
+.sidebar-section .sidebar-sources {
+    margin-top: 6px;
+    font-size: 0.7rem;
+    color: #777;
+    font-style: italic;
+}
+
+#sidebar-chart {
+    background: #16213e;
+    border-radius: 4px;
+    padding: 8px 0 4px 0;
+    text-align: center;
+}
+
 #map {
+    flex: 1;
     height: 100vh;
 }
 
 .sequence-control-container {
-    background: rgba(255, 255, 255, 0.8);
+    background: #1a1a2e;
     padding: 12px 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
     font-size: 1rem;
+    color: #e0e0e0;
+    border-radius: 6px;
 }
 
 .slider-row {
@@ -28,96 +118,22 @@ body {
 .sequence-control-container .year-slider {
     width: 200px;
     cursor: pointer;
+    accent-color: #4a90d9;
 }
 
 .step-btn {
-    background: none;
-    border: 1px solid #aaa;
+    background: #16213e;
+    border: 1px solid #4a90d9;
+    color: #4a90d9;
     cursor: pointer;
     padding: 4px 9px;
     font-size: 0.875rem;
     line-height: 1;
+    border-radius: 3px;
 }
 
 .step-btn:hover {
-    background: #eee;
-}
-
-.legend-control-container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 10px 14px;
-    font-size: 0.85rem;
-    max-width: 220px;
-}
-
-.legend-title {
-    margin: 0 0 6px 0;
-    font-size: 0.95rem;
-}
-
-.legend-total {
-    margin: 0 0 6px 0;
-    font-size: 0.85rem;
-    color: #333;
-}
-
-.legend-total-label {
-    font-weight: bold;
-    color: #555;
-}
-
-.legend-year-info {
-    margin: 0 0 8px 0;
-    font-size: 0.8rem;
-    color: #444;
-    line-height: 1.4;
-}
-
-.legend-symbols {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 8px;
-}
-
-.legend-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.legend-circle {
-    display: inline-block;
-    border-radius: 50%;
-    background: #4a90d9;
-    opacity: 0.8;
-    flex-shrink: 0;
-}
-
-.legend-label {
-    font-size: 0.8rem;
-    color: #333;
-}
-
-.legend-references {
-    border-top: 1px solid #ccc;
-    padding-top: 6px;
-    margin-top: 4px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    font-size: 0.75rem;
-}
-
-.legend-ref-title {
-    font-weight: bold;
-    font-size: 0.75rem;
-    color: #555;
-    margin-bottom: 2px;
-}
-
-.legend-references a {
-    color: #333;
+    background: #1a2744;
 }
 
 .popup-content h3 {
