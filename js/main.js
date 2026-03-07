@@ -9,7 +9,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 var currentYear = 1980;
 var geoJsonLayer;
-var yearlyTotals = {}; // cached totals for each year, built after data loads
+var yearlyTotals = {};
 
 // Function to create a styled popup with parkname, year, and visitor count that dynamically changes with year.
 function buildPopup(props) {
@@ -24,13 +24,13 @@ function buildPopup(props) {
         '</div>';
 }
 
-// Scale visitor count to circle radius — power 0.6 gives more visual separation than sqrt (0.5)
+// Scale visitor count to circle radius, scaled to provide more separation between values for user
 function getRadius(visitors) {
     if (!visitors || visitors === 0) return 3;
     return Math.max(2, Math.pow(visitors / 500000, 0.6) * 5);
 }
 
-// Sidebar historical sections — each has a year range, title, body, and sources
+// Sidebar historical sections, each has a year range, title, body, and sources
 var sidebarSections = [
     {
         range: [1980, 1989],
@@ -100,7 +100,7 @@ var sidebarSections = [
     }
 ];
 
-// Cache yearly totals once after data loads
+// Save totals for later
 function buildYearlyTotals() {
     for (var y = 1980; y <= 2024; y++) {
         var total = 0;
@@ -266,7 +266,7 @@ function updateYear(year) {
     }
 }
 
-// Create sequence controls using Leaflet's L.Control
+// Create sequence controls
 function createSequenceControls() {
     var SequenceControl = L.Control.extend({
         options: {
@@ -297,7 +297,6 @@ function createSequenceControls() {
             btnNext.innerHTML = '&#9654;';
             btnNext.title = 'Next year';
 
-            // Prevent map interactions when using the control
             L.DomEvent.disableClickPropagation(container);
             L.DomEvent.disableScrollPropagation(container);
 
